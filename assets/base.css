@@ -42,6 +42,7 @@ body {
     width: 100%;
     height: 100%; /* For at least Firefox */
     min-height: 100%;
+    overflow: hidden;
 }
 .site-wrapper-inner {
     display: table-cell;
@@ -109,6 +110,8 @@ body {
 
 .cover {
     padding: 0 20px;
+    position: relative;
+    z-index: 2;
 }
 .cover .btn-lg {
     padding: 10px 20px;
@@ -133,7 +136,7 @@ body {
 @media (min-width: 768px) {
     /* Pull out the header and footer */
     .masthead {
-        position: fixed;
+        position: absolute;
         top: 0;
     }
     .mastfoot {
@@ -158,4 +161,22 @@ body {
     .cover-container {
         width: 700px;
     }
+}
+
+.cover-background {
+    color: rgba(255, 255, 255, 0.03);
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    z-index:1;
+    font-size: 662px;
+    text-shadow: none;
+    margin: -421px 0 0 -213px;
+}
+
+/*
+ * Stream markup
+ */
+#stream {
+    background:#fff;
 }
