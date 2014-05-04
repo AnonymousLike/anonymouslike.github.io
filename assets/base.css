@@ -176,6 +176,7 @@ body {
     background: #fff;
     text-align: left;
     box-shadow: 0 1px 0 #F1F1F1;
+    padding-right: 69px;
 }
 
 #stream .page img {
@@ -366,6 +367,10 @@ body {
 
 #use pre {
     text-align: center;
-    display: inline;
+    display: inline-block;
+    word-wrap: normal;
     padding: 10px 59px;
+    overflow: hidden;
+    word-break: break-all;
+    white-space: normal;
 }
