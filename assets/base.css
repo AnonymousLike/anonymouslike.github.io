@@ -211,14 +211,14 @@ body {
 
 #stream .title {
     display: inline-block;
-    line-height: 20px;
     position: relative;
     z-index: 2;
     padding: 0 15px;
     border-radius: 3px;
     margin: auto 0;
     vertical-align: middle;
-    font-size: 15px;
+    font-size: 12px;
+    line-height: 15px;
     font-weight: 200;
 }
 
@@ -242,7 +242,7 @@ body {
     font-family: inherit;
     font-weight: 500;
     line-height: 1.1;
-    font-size: 24px;
+    font-size: 15px;
     color: #CECECE;
     margin-right: 13px;
     padding-bottom: 10px;
@@ -377,6 +377,13 @@ body {
 
     #stream .cover {
         margin-top: 115px;
+    }
+    #stream .masthead-nav li {
+        font-size:24px;
+    }
+    #stream .title {
+        font-size:15px;
+        line-height: 20px;
     }
 }
 
