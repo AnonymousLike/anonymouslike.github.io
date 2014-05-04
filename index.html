@@ -48,12 +48,15 @@
             </div>
 
             <div class="inner cover">
-                <h1 class="cover-heading"><i class="fa fa-lock"></i> Anonymously Like</h1>
-                <p class="lead">Like web pages without embarrassment.</p>
+                <h1 class="cover-heading"><i class="fa fa-lock"></i> Anonymous Like</h1>
+                <p class="lead">Pages liked without embarrassment.</p>
                 <p class="lead">
                     <a href="#stream" class="btn btn-lg btn-default">Recently Liked</a>
                     &nbsp;
                     <a href="#use" class="btn btn-lg btn-default">Add to Your Site</a>
+
+                    <br><br>
+                    <iframe id="anonymous-like" src="" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px;" allowTransparency="true"></iframe><script>var al = document.getElementById('anonymous-like'); var data = { title: window.document.title, url: window.document.location.href }; al.src = 'http://s3.amazonaws.com/anonymouslike-test/like.html' + '?' + encodeURIComponent(JSON.stringify(data));</script>
                 </p>
             </div>
 
@@ -75,8 +78,18 @@
 
         <div class="cover-container">
 
+            <div class="masthead clearfix">
+                <div class="inner">
+                    <ul class="nav masthead-nav">
+                        <li class="active" data-order="updatedAt">Recently Liked</li>
+                        <li data-order="count">Most Liked</li>
+                    </ul>
+                </div>
+            </div>
 
+            <div class="inner cover" id="liked">
 
+            </div>
         </div>
 
     </div>
@@ -89,7 +102,11 @@
 
         <div class="cover-container">
 
-
+            <div class="masthead clearfix">
+                <div class="inner">
+                    <h3 class="masthead-brand">Add to Your Site</h3>
+                </div>
+            </div>
 
         </div>
 
@@ -97,12 +114,14 @@
 
 </div>
 
-<!-- Bootstrap core JavaScript
+<!-- JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="http://www.parsecdn.com/js/parse-1.2.18.min.js"></script>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 <script src="assets/jquery.smooth-scroll.min.js"></script>
+<script src="assets/md5.js"></script>
 <script src="assets/base.js"></script>
 </body>
 </html>
