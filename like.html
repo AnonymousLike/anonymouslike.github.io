@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="description" content="Anonymous Like" />
+  <meta charset="utf-8">
+  <title>Anonymous Like</title>
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    body {
+      background: transparent;
+      overflow: hidden;
+      -webkit-text-size-adjust: none;
+      font-size: 11px;
+      font-family: 'Helvetica Neue', Helvetica, Arial, 'lucida grande',tahoma,verdana,arial,sans-serif;
+      line-height: 1.28;
+      margin: 0;
+      padding: 0;
+      text-align: left;
+      direction: ltr;
+      unicode-bidi: embed;
+    }
+
+    table {
+      border-spacing: 0px;
+      border-color: gray;
+    }
+
+    .btn {
+      background: #333;
+      background: -webkit-gradient(linear, center top, center bottom, from(#4c69ba), to(#3b55a0));
+      background: -webkit-linear-gradient(#141823, #141823);
+      border: none;
+      -webkit-border-radius: 2px;
+      color: #fff;
+      cursor: pointer;
+      display: inline-block;
+      font-weight: bold;
+      height: 20px;
+      line-height: 20px;
+      text-shadow: 0 -1px 0 #141823;
+      white-space: nowrap;
+      padding-right: 7px;
+      padding-left: 2px;
+    }
+
+    .btn i {
+      min-width: 14px;
+    }
+
+    .count {
+      background: white;
+      border: 1px solid #898f9c;
+      color: #6a7180;
+      display: inline-block;
+      font-size: 11px;
+      height: auto;
+      line-height: 18px;
+      margin-left: 7px;
+      min-width: 15px;
+      padding: 0 3px;
+      text-align: center;
+      white-space: nowrap;
+      border-radius: 2px;
+    }
+
+    .nub {
+      height: 0;
+      left: 2px;
+      position: relative;
+      top: -15px;
+      width: 5px;
+      z-index: 2;
+    }
+
+    .nub s, .nub i {
+      border-color: transparent #898f9c;
+      border-style: solid;
+      border-width: 4px 5px 4px 0;
+      display: block;
+      position: relative;
+      top: 1px;
+    }
+
+    .nub i {
+      border-right-color: #fff;
+      left: 1px;
+      top: -7px;
+    }
+
+    #like:hover {
+        opacity:0.9;
+    }
+    #like .fa {
+        display:none;
+    }
+    #like .fa.fa-lock {
+        display:inline-block;
+    }
+    #like.liked .fa.fa-lock {
+        display:none;
+    }
+    #like.liked .fa.fa-check {
+        display:inline-block;
+    }
+    #like.liked:hover .fa.fa-check {
+        display:none;
+    }
+    #like.liked:hover .fa.fa-times {
+        display:inline-block;
+    }
+  </style>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.18.min.js"></script>
+</head>
+<body>
+  <table>
+    <tbody>
+      <tr>
+        <!-- Button -->
+        <td>
+          <!--<form rel="async" method="post" action="">-->
+            <div>
+              <div class="btn-container">
+                <div class="btn-image">
+                  <button id="like" class="btn" type="submit"><i class="fa fa-lock"></i><i class="fa fa-check"></i><i class="fa fa-times"></i> Like</button>
+                </div>
+              </div>
+            </div>
+          <!--</form>-->
+        </td>
+
+        <!-- Count -->
+        <td>
+          <div class="count">
+            <span>0</span>
+          </div>
+          <div class="nub">
+            <s></s>
+            <i></i>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  </div>
+
+  <script type="text/javascript">
+    // Todo List
+    // =========
+    //
+    // - Normalize URL (Facebook debugger?)
+
+    (function () {
+      'use strict';
+
+      // So secert, do no abuse!!!
+      Parse.initialize("Pfx7Q4qTar92RiUQfGWdBeqLk9yUCQlWHT8r5LDt", "W1R2kFLnlUL4gIQ17q21CBmZ0Pe8mNzLZ1HvGu71");
+
+      var Like  = Parse.Object.extend("like");
+      var query = new Parse.Query(Like);
+      var data  = window.document.location.search;
+      var json, url, title, likeObj;
+      if (data) {
+        json  = JSON.parse(decodeURIComponent(data.substr(1)));
+        url   = json.url;
+        title = json.title;
+      } else {
+        url   = window.location.toString();
+        title = window.document.title;
+      }
+
+      // Update count.
+      function updateCount(count) {
+        $('.count span').text(count);
+      }
+
+      // Retrieve and render count.
+      query.equalTo('url', url);
+      query.first({
+        success: function (item) {
+          // Existing URL.
+          if (item) {
+            likeObj = item;
+            return updateCount(likeObj.get('count'));
+          }
+
+          // New URL, and initialize.
+          likeObj = new Like();
+          likeObj.save({
+            title: title,
+            url  : url,
+            count: 0
+          });
+        },
+        error: function (err) {
+          console.error(err); // FIXME
+        }
+      });
+
+      // Determine if already liked via local storage.
+      // console.log('URL: ' + localStorage.url);
+      if (localStorage.url === url) {
+          $('#like').addClass('liked');
+      }
+
+      // Update count.
+      $('#like').on('click', function (e) {
+        // Disable button before incrementing count.
+        var liking = !$(this).hasClass('liked');
+        $('#like').toggleClass('liked');
+        if(liking) {
+            likeObj.increment('count');
+        }
+        else {
+           likeObj.increment('count', -1);
+        }
+
+        likeObj.save().then(function (item) {
+          likeObj = item;
+          updateCount(likeObj.get('count'));
+
+          if(liking) {
+            // Remember like.
+            localStorage.url = url;
+          }
+          else {
+            localStorage.url = "";
+          }
+        });
+      });
+    }).call(this);
+  </script>
+</body>
+</html>
