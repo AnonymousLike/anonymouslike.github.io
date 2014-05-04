@@ -179,7 +179,7 @@ body {
     z-index: 1;
     font-size: 662px;
     text-shadow: none;
-    margin: -421px 0 0 -213px;
+    margin: -435px 0 0 -213px;
 }
 
 /*
@@ -327,4 +327,25 @@ body {
     width: 100%;
     bottom: 0;
     border-top: 1px solid #E6E6E6;
+}
+
+#use .add {
+    text-shadow: none;
+    text-align: left;
+    padding: 15px 22px;
+    font-size: 19px;
+    margin-left: 63px;
+}
+#use .number {
+    background:#fff;
+    color:#333;
+    width: 42px;
+    height: 42px;
+    border-radius: 23px;
+    line-height: 42px;
+    text-align: center;
+    position: relative;
+    left: -55px;
+    top: 33px;
+    font-size: 28px;
 }
