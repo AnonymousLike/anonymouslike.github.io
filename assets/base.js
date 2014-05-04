@@ -14,7 +14,7 @@ var app = {
         query.descending(order);
 
         // Set limit to 20, default is 100.
-        query.limit(20);
+        query.limit(15);
 
         // Clear any existing content
         $( "#liked" ).html("");
@@ -58,6 +58,22 @@ var app = {
             app.renderLiked(order);
         });
         $( "#stream li.active").trigger("click");
+        var tryActive = true;
+        $( window ).scroll(function() {
+            var scrollTop = $(window).scrollTop();
+            if(scrollTop > 0) {
+                if(tryActive) {
+                    tryActive = false;
+                    $("#try-it-out").fadeOut();
+                }
+            }
+            else {
+                if(!tryActive) {
+                    tryActive = true;
+                    $("#try-it-out").fadeIn();
+                }
+            }
+        });
     },
     build: function() {
         app.controlScrolling();

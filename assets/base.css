@@ -445,3 +445,22 @@ body {
     z-index: 2;
     opacity: 0;
 }
+#try-it-out {
+    position: relative;
+    display: inline-block;
+}
+#try-it-out img {
+    position: absolute;
+    top: -126px;
+    left: 12px;
+    width: 27px;
+}
+#try-it-out span {
+    position: absolute;
+    top: -147px;
+    left: -6px;
+    white-space: nowrap;
+    font-weight: 200;
+    font-size: 16px;
+    text-shadow: none;
+}
