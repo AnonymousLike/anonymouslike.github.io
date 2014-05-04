@@ -104,7 +104,7 @@ body {
 .cover .btn-lg {
     padding: 10px 20px;
     font-weight: bold;
-    margin: 24px;
+    margin: 15px;
 }
 
 @media (min-width: 768px) {
@@ -355,7 +355,13 @@ body {
     margin-bottom: 10px;
 }
 
+#try-it-out * {
+    display:none;
+}
 
+#try-it-out * {
+    display:none;
+}
 /*
  * Affix and center
  */
@@ -400,6 +406,14 @@ body {
         display: block;
     }
 
+
+    #try-it-out * {
+        display:inline;
+    }
+
+    #try-it-out * {
+        display:inline;
+    }
 }
 
 @media (min-width: 992px) {
