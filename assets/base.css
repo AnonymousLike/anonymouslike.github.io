@@ -175,12 +175,12 @@ body {
     background: #fff;
     text-align: left;
     box-shadow: 0 1px 0 #F1F1F1;
-    padding: 5px 69px 5px 114px;
+    padding: 5px 69px 5px 112px;
     line-height: 74px;
 }
 
 #stream .page img {
-    width: 055px;
+    width: 103px;
     height: 73px;
     opacity: 1;
     /* height: 64px; */
