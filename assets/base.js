@@ -31,11 +31,14 @@ var app = {
                     var img_src = "http://api.url2png.com/v6/P53657257D7555/"+token+"/png/"+img_path;
 
                     // Insert the page data into the recently liked list
-                    $( "#liked" ).append( "<div class='page'><img src='"+img_src+"' /><a class='title' href='" + url + "'>" + item.get('title') + "</a><div class='count'>" + item.get('count') + "<div class='nub'><s></s><i></i></div></div></div>" );
+                    $( "#liked" ).append( "<div class='page'><img src='"+img_src+"' /><a class='title' href='" + url + "'>" + item.get('title') + "</a><div class='count'><i class='fa fa-lock'></i> " + item.get('count') + "<div class='nub'><s></s><i></i></div></div></div>" );
 
                 });
                 $('#liked img').error(function(){
                     $(this).attr('src', 'assets/missing.png');
+                });
+                $( "#liked .page" ).each(function(index) {
+                    $(this).stop().delay(50*index).animate({opacity:1},200);
                 });
             },
             error: function (err) {
