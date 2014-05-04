@@ -151,7 +151,8 @@ body {
     z-index: 1;
     font-size: 662px;
     text-shadow: none;
-    margin: -615px 0 0 -213px;
+    margin: -435px 0 0 -213px;
+    display: none;
 }
 
 /*
@@ -396,7 +397,7 @@ body {
     }
 
     .cover-background {
-        margin-top: -435px;
+        display: block;
     }
 
 }
