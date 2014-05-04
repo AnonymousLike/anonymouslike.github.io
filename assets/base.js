@@ -31,7 +31,7 @@ var app = {
                     var img_src = "http://api.url2png.com/v6/P53657257D7555/"+token+"/png/"+img_path;
 
                     // Insert the page data into the recently liked list
-                    $( "#liked" ).append( "<div class='page'><img src='"+img_src+"' /><div class='bg-fade'></div><a class='title' href='" + url + "'>" + item.get('title') + "</a><div class='count'><i class='fa fa-lock'></i> &nbsp;" + item.get('count') + "<div class='nub'><s></s><i></i></div></div></div>" );
+                    $( "#liked" ).append( "<div class='page'><a href='" + url + "' target='_blank'><img src='"+img_src+"' /></a><div class='bg-fade'></div><a class='title' href='" + url + "' target='_blank'>" + item.get('title') + "</a><div class='count'><i class='fa fa-lock'></i> &nbsp;" + item.get('count') + "<div class='nub'><s></s><i></i></div></div></div>" );
 
                 });
                 $('#liked img').error(function(){
@@ -74,6 +74,24 @@ var app = {
                 }
             }
         });
+
+        //$('.tip').tooltip({});
+
+        var client = new ZeroClipboard( document.getElementById("copy-button"), {
+            moviePath: "assets/zeroclipboard/ZeroClipboard.swf"
+        } );
+
+        client.on( "load", function(client) {
+            // alert( "movie is loaded" );
+
+            client.on( "complete", function(client, args) {
+                // `this` is the element that was clicked
+                $(this).addClass("clicked");
+                $(this).tooltip('show')
+                //alert("Copied text to clipboard: " + args.text );
+            } );
+        } );
+
     },
     build: function() {
         app.controlScrolling();
