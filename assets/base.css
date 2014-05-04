@@ -313,7 +313,7 @@ body {
 }
 
 #use .cover-container {
-    margin-top: -38px;
+    margin-top: -65px;
 }
 
 
@@ -362,4 +362,10 @@ body {
     .cover-container {
         width: 700px;
     }
+}
+
+#use pre {
+    text-align: center;
+    display: inline;
+    padding: 10px 59px;
 }
