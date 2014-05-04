@@ -66,6 +66,7 @@ body {
 .masthead-brand {
     margin-top: 10px;
     margin-bottom: 10px;
+    display: none;
 }
 
 .masthead-nav > li {
@@ -99,13 +100,25 @@ body {
     border-bottom-color: #fff;
 }
 
+
+.cover .btn-lg {
+    padding: 10px 20px;
+    font-weight: bold;
+    margin: 24px;
+}
+
 @media (min-width: 768px) {
     .masthead-brand {
         float: left;
+        display: block;
     }
 
     .masthead-nav {
         float: right;
+    }
+
+    .cover .btn-lg {
+        margin:0;
     }
 }
 
@@ -119,11 +132,6 @@ body {
     z-index: 2;
 }
 
-.cover .btn-lg {
-    padding: 10px 20px;
-    font-weight: bold;
-    margin-bottom: 12px;
-}
 
 /*
  * Footer
@@ -143,7 +151,7 @@ body {
     z-index: 1;
     font-size: 662px;
     text-shadow: none;
-    margin: -435px 0 0 -213px;
+    margin: -615px 0 0 -213px;
 }
 
 /*
@@ -213,7 +221,7 @@ body {
     display: inline-block;
     position: relative;
     z-index: 2;
-    padding: 0 0 0 0;
+    padding: 0 3px;
     border-radius: 3px;
     margin: auto 0;
     vertical-align: middle;
@@ -386,6 +394,11 @@ body {
         line-height: 20px;
         padding:0 15px;
     }
+
+    .cover-background {
+        margin-top: -435px;
+    }
+
 }
 
 @media (min-width: 992px) {
